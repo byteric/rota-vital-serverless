@@ -1,0 +1,28 @@
+# More information about the configuration file can be found here:
+# # https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-config.html
+version = 0.1
+
+[default.global.parameters]
+stack_name = "rota-vital-serverless"
+
+[default.build.parameters]
+cached = true
+parallel = true
+
+[default.validate.parameters]
+lint = true
+
+[default.deploy.parameters]
+capabilities = "CAPABILITY_IAM"
+confirm_changeset = true
+resolve_s3 = true
+
+[default.package.parameters]
+resolve_s3 = true
+
+[default.sync.parameters]
+watch = true
+
+# warm_containers desabilitado por padrao para demonstrar cold start por requisicao
+# ao rodar `sam local start-api` (conforme roteiro da atividade).
+# Use `--warm-containers LAZY` ou `EAGER` na linha de comando para ativar reuso.
