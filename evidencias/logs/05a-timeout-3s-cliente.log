@@ -1,0 +1,21 @@
+$ sam local start-api --warm-containers LAZY
+
+# Aquecimento (R-002)
+$ curl -X POST http://127.0.0.1:3000/guias -H "Content-Type: application/json" -d '{"requisicaoId":"R-002","hospital":"H-Caruaru"}'
+{"guia": "G-R-002", "hospital": "H-Caruaru", "bolsas": [], "invocacaoNesteAmbiente": 1}
+HTTP 201 | time_total=3.477430s
+[wall=3.502s]
+
+# Timeout R-003 (Timeout=3s)
+$ curl -X POST http://127.0.0.1:3000/guias -H "Content-Type: application/json" -d '{"requisicaoId":"R-003","demorar":true}'
+{"message":"Internal server error"}
+
+HTTP 502 | time_total=4.205799s
+[wall=4.225s]
+
+# Pos-timeout R-004 (novo ambiente)
+$ curl -X POST http://127.0.0.1:3000/guias -H "Content-Type: application/json" -d '{"requisicaoId":"R-004","hospital":"H-Petrolina"}'
+{"guia": "G-R-004", "hospital": "H-Petrolina", "bolsas": [], "invocacaoNesteAmbiente": 1}
+HTTP 201 | time_total=1.135217s
+[wall=1.154s]
+

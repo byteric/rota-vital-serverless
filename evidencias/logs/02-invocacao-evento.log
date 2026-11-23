@@ -1,0 +1,54 @@
+$ sam build
+Starting Build use cache
+Manifest file is changed (new hash: d8bbe24fb77c96a0a3fdd14d229be74f) or dependency folder (.aws-sam\deps\cc9b2dd5-8401-4687-9bb6-1c804fb0dd0e) is missing for (HelloWorldFunction), downloading dependencies and copying/building source
+Building codeuri: C:\Users\krgam\Desktop\rota-vital-serverless\hello_world runtime: python3.12 architecture: x86_64 functions: HelloWorldFunction
+ Running PythonPipBuilder:CleanUp
+ Running PythonPipBuilder:ResolveDependencies
+ Running PythonPipBuilder:CopySource
+ Running PythonPipBuilder:CopySource
+
+Build Succeeded
+
+Built Artifacts  : .aws-sam\build
+Built Template   : .aws-sam\build\template.yaml
+
+Commands you can use next
+=========================
+[*] Validate SAM template: sam validate
+
+[*] Invoke Function: sam local invoke
+
+[*] Test Function in the Cloud: sam sync --stack-name {{stack-name}} --watch
+
+[*] Deploy: sam deploy --guided
+[exit=0 | wall=5.780s]
+
+=== INVOCACAO 1 ===
+$ sam local invoke -e events/pedido.json
+No current session found, using default AWS::AccountId
+Invoking app.lambda_handler (python3.12)
+Local image is up-to-date
+Using local image: public.ecr.aws/lambda/python:3.12-rapid-x86_64.
+
+Mounting C:\Users\krgam\Desktop\rota-vital-serverless\.aws-sam\build\HelloWorldFunction as /var/task:ro,delegated, inside runtime container
+SAM_CONTAINER_ID: d9948c4b916d3eacf1cefdfb3d422fa5f4069776bf1804e8fc9d1c195ab330c9
+START RequestId: 8fd35fa7-041e-41ab-853a-36805ead7d7a Version: $LATEST
+END RequestId: 8fd35fa7-041e-41ab-853a-36805ead7d7a
+REPORT RequestId: 8fd35fa7-041e-41ab-853a-36805ead7d7a	Init Duration: 0.05 ms	Duration: 157.78 ms	Billed Duration: 158 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+{"statusCode": 201, "headers": {"Content-Type": "application/json"}, "body": "{\"guia\": \"G-R-001\", \"hospital\": \"H-Recife\", \"bolsas\": [\"O-NEG-0142\"], \"invocacaoNesteAmbiente\": 1}"}
+[exit=0 | wall=11.805s]
+
+=== INVOCACAO 2 ===
+$ sam local invoke -e events/pedido.json
+No current session found, using default AWS::AccountId
+Invoking app.lambda_handler (python3.12)
+Local image is up-to-date
+Using local image: public.ecr.aws/lambda/python:3.12-rapid-x86_64.
+
+Mounting C:\Users\krgam\Desktop\rota-vital-serverless\.aws-sam\build\HelloWorldFunction as /var/task:ro,delegated, inside runtime container
+SAM_CONTAINER_ID: 195fdb670726fe255374b7414297644912f391848cfde5651480e41f0dac77f9
+START RequestId: 25ad463a-8c97-4dd0-a2ec-779d4c1a9893 Version: $LATEST
+END RequestId: 25ad463a-8c97-4dd0-a2ec-779d4c1a9893
+REPORT RequestId: 25ad463a-8c97-4dd0-a2ec-779d4c1a9893	Init Duration: 0.04 ms	Duration: 51.35 ms	Billed Duration: 52 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+{"statusCode": 201, "headers": {"Content-Type": "application/json"}, "body": "{\"guia\": \"G-R-001\", \"hospital\": \"H-Recife\", \"bolsas\": [\"O-NEG-0142\"], \"invocacaoNesteAmbiente\": 1}"}
+[exit=0 | wall=7.535s]

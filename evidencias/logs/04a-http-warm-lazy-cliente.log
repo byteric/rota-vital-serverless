@@ -1,0 +1,20 @@
+$ sam local start-api --warm-containers LAZY
+
+# Chamada 1 (warm LAZY - cold start)
+$ curl -X POST http://127.0.0.1:3000/guias -H "Content-Type: application/json" -d '{"requisicaoId":"R-002","hospital":"H-Caruaru"}'
+{"guia": "G-R-002", "hospital": "H-Caruaru", "bolsas": [], "invocacaoNesteAmbiente": 1}
+HTTP 201 | time_total=4.834868s
+[wall=4.850s]
+
+# Chamada 2 (warm LAZY - container reaproveitado)
+$ curl -X POST http://127.0.0.1:3000/guias -H "Content-Type: application/json" -d '{"requisicaoId":"R-002","hospital":"H-Caruaru"}'
+{"guia": "G-R-002", "hospital": "H-Caruaru", "bolsas": [], "invocacaoNesteAmbiente": 2}
+HTTP 201 | time_total=1.095316s
+[wall=1.107s]
+
+# Chamada 3 (warm LAZY - container reaproveitado)
+$ curl -X POST http://127.0.0.1:3000/guias -H "Content-Type: application/json" -d '{"requisicaoId":"R-002","hospital":"H-Caruaru"}'
+{"guia": "G-R-002", "hospital": "H-Caruaru", "bolsas": [], "invocacaoNesteAmbiente": 3}
+HTTP 201 | time_total=1.091435s
+[wall=1.103s]
+

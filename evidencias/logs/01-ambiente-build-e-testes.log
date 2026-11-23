@@ -1,0 +1,59 @@
+$ sam --version
+SAM CLI, version 1.174.0
+
+$ python --version
+Python 3.12.10
+
+$ docker info --format "{{.ServerVersion}} ({{.OSType}})"
+29.9.3 (linux)
+
+$ sam validate --lint
+C:\Users\krgam\Desktop\rota-vital-serverless\template.yaml is a valid SAM Template
+
+$ pytest tests/unit -v
+============================= test session starts =============================
+platform win32 -- Python 3.12.10, pytest-9.2.0, pluggy-1.7.0 -- C:\Users\krgam\AppData\Local\Programs\Python\Python312\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\krgam\Desktop\rota-vital-serverless
+collecting ... collected 16 items
+
+tests/unit/test_handler.py::test_missing_requisicao_id_returns_400 PASSED [  6%]
+tests/unit/test_handler.py::test_empty_body_returns_400 PASSED           [ 12%]
+tests/unit/test_handler.py::test_valid_request_generates_guia_and_increments_counter PASSED [ 18%]
+tests/unit/test_handler.py::test_base64_encoded_body_from_sam_generate_event PASSED [ 25%]
+tests/unit/test_handler.py::test_demorar_flag_sleeps_five_seconds_and_returns_201 PASSED [ 31%]
+tests/unit/test_handler.py::test_malformed_json_returns_400 PASSED       [ 37%]
+tests/unit/test_handler.py::test_invalid_base64_returns_400 PASSED       [ 43%]
+tests/unit/test_handler.py::test_non_object_json_returns_400[null] PASSED [ 50%]
+tests/unit/test_handler.py::test_non_object_json_returns_400[[]] PASSED  [ 56%]
+tests/unit/test_handler.py::test_non_object_json_returns_400[123] PASSED [ 62%]
+tests/unit/test_handler.py::test_non_object_json_returns_400[["requisicaoId"]] PASSED [ 68%]
+tests/unit/test_handler.py::test_invalid_requisicao_id_value_returns_400[None] PASSED [ 75%]
+tests/unit/test_handler.py::test_invalid_requisicao_id_value_returns_400[123] PASSED [ 81%]
+tests/unit/test_handler.py::test_invalid_requisicao_id_value_returns_400[] PASSED [ 87%]
+tests/unit/test_handler.py::test_invalid_requisicao_id_value_returns_400[   ] PASSED [ 93%]
+tests/unit/test_handler.py::test_pedido_json_fixture_executes_cleanly PASSED [100%]
+
+============================= 16 passed in 0.03s ==============================
+
+$ sam build
+Starting Build use cache
+Manifest is not changed for (HelloWorldFunction), running incremental build
+Building codeuri: C:\Users\krgam\Desktop\rota-vital-serverless\hello_world runtime: python3.12 architecture: x86_64 functions: HelloWorldFunction
+ Running PythonPipBuilder:CopySource
+ Running PythonPipBuilder:CopySource
+
+Build Succeeded
+
+Built Artifacts  : .aws-sam\build
+Built Template   : .aws-sam\build\template.yaml
+
+Commands you can use next
+=========================
+[*] Validate SAM template: sam validate
+
+[*] Invoke Function: sam local invoke
+
+[*] Test Function in the Cloud: sam sync --stack-name {{stack-name}} --watch
+
+[*] Deploy: sam deploy --guided

@@ -1,0 +1,31 @@
+$ sam build
+Starting Build use cache
+Manifest is not changed for (HelloWorldFunction), running incremental build
+Building codeuri: C:\Users\krgam\Desktop\rota-vital-serverless\hello_world runtime: python3.12 architecture: x86_64 functions: HelloWorldFunction
+ Running PythonPipBuilder:CopySource
+ Running PythonPipBuilder:CopySource
+
+Build Succeeded
+
+Built Artifacts  : .aws-sam\build
+Built Template   : .aws-sam\build\template.yaml
+
+Commands you can use next
+=========================
+[*] Validate SAM template: sam validate
+
+[*] Invoke Function: sam local invoke
+
+[*] Test Function in the Cloud: sam sync --stack-name {{stack-name}} --watch
+
+[*] Deploy: sam deploy --guided
+[exit=0 | wall=3.266s]
+
+$ sam local start-api --warm-containers LAZY
+
+# Passo 5B: demorar=true com Timeout=10
+$ curl -X POST http://127.0.0.1:3000/guias -H "Content-Type: application/json" -d '{"requisicaoId":"R-003","demorar":true}'
+{"guia": "G-R-003", "hospital": null, "bolsas": [], "invocacaoNesteAmbiente": 1}
+HTTP 201 | time_total=8.616461s
+[wall=8.645s]
+

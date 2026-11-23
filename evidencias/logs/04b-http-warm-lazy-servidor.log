@@ -1,0 +1,31 @@
+No current session found, using default AWS::AccountId
+Mounting HelloWorldFunction at http://127.0.0.1:3000/guias [POST]
+You can now browse to the above endpoints to invoke your functions. You do not need to restart/reload SAM CLI while working on your functions, changes will be reflected instantly/automatically. If you used sam build before running local commands, you will need to re-run sam build for the changes to be picked up. You only need to restart SAM CLI if you update your AWS SAM template
+2026-11-24 08:08:57 WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:3000
+2026-11-24 08:08:57 Press CTRL+C to quit
+Invoking app.lambda_handler (python3.12)
+Local image is up-to-date
+Using local image: public.ecr.aws/lambda/python:3.12-rapid-x86_64.
+
+Mounting C:\Users\krgam\Desktop\rota-vital-serverless\.aws-sam\build\HelloWorldFunction as /var/task:ro,delegated, inside runtime container
+SAM_CONTAINER_ID: f625124f8ce7c5621442aa32a431e0e9f9d570928b38b1d3716fafbf49f5d318
+START RequestId: 7375ef4d-26e1-4a5f-9d52-9448bbbf7228 Version: $LATEST
+END RequestId: 7375ef4d-26e1-4a5f-9d52-9448bbbf7228
+REPORT RequestId: 7375ef4d-26e1-4a5f-9d52-9448bbbf7228	Init Duration: 0.04 ms	Duration: 55.09 ms	Billed Duration: 56 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+
+2026-11-24 08:09:04 127.0.0.1 - - [24/Nov/2026 08:09:04] "POST /guias HTTP/1.1" 201 -
+Invoking app.lambda_handler (python3.12)
+Lambda function 'HelloWorldFunction' is already running
+START RequestId: cf6b06e5-1456-44bf-bea4-7e3c9f24cf24 Version: $LATEST
+END RequestId: cf6b06e5-1456-44bf-bea4-7e3c9f24cf24
+REPORT RequestId: cf6b06e5-1456-44bf-bea4-7e3c9f24cf24	Duration: 1.20 ms	Billed Duration: 2 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+
+2026-11-24 08:09:05 127.0.0.1 - - [24/Nov/2026 08:09:05] "POST /guias HTTP/1.1" 201 -
+Invoking app.lambda_handler (python3.12)
+Lambda function 'HelloWorldFunction' is already running
+START RequestId: cff58baa-6653-4eef-96b3-b910f2098bb9 Version: $LATEST
+END RequestId: cff58baa-6653-4eef-96b3-b910f2098bb9
+REPORT RequestId: cff58baa-6653-4eef-96b3-b910f2098bb9	Duration: 1.18 ms	Billed Duration: 2 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+
+2026-11-24 08:09:06 127.0.0.1 - - [24/Nov/2026 08:09:06] "POST /guias HTTP/1.1" 201 -

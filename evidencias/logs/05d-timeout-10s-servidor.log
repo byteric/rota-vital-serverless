@@ -1,0 +1,17 @@
+No current session found, using default AWS::AccountId
+Mounting HelloWorldFunction at http://127.0.0.1:3000/guias [POST]
+You can now browse to the above endpoints to invoke your functions. You do not need to restart/reload SAM CLI while working on your functions, changes will be reflected instantly/automatically. If you used sam build before running local commands, you will need to re-run sam build for the changes to be picked up. You only need to restart SAM CLI if you update your AWS SAM template
+2026-11-24 08:09:31 WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:3000
+2026-11-24 08:09:31 Press CTRL+C to quit
+Invoking app.lambda_handler (python3.12)
+Local image is up-to-date
+Using local image: public.ecr.aws/lambda/python:3.12-rapid-x86_64.
+
+Mounting C:\Users\krgam\Desktop\rota-vital-serverless\.aws-sam\build\HelloWorldFunction as /var/task:ro,delegated, inside runtime container
+SAM_CONTAINER_ID: 66e7ca3ced61278af6743ea489d7175b7686adef7701a74c88462b75c452e727
+START RequestId: 12282edf-387b-42ea-976d-801e045ed57a Version: $LATEST
+END RequestId: 12282edf-387b-42ea-976d-801e045ed57a
+REPORT RequestId: 12282edf-387b-42ea-976d-801e045ed57a	Init Duration: 0.03 ms	Duration: 5057.22 ms	Billed Duration: 5058 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+
+2026-11-24 08:09:41 127.0.0.1 - - [24/Nov/2026 08:09:41] "POST /guias HTTP/1.1" 201 -
