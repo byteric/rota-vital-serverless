@@ -14,6 +14,11 @@ Função serverless em Python 3.12 que gera a guia de transporte de uma requisi�
 ```text
 rota-vital-serverless/
 ├── evidencias/
+│   ├── 01-invocacao-evento.png              # Print real: sam local invoke (G-R-001)
+│   ├── 02-http-sem-warm-containers.png      # Print real: HTTP sem warm (contador 1, 1, 1)
+│   ├── 03-http-warm-containers-lazy.png     # Print real: HTTP --warm-containers LAZY (1, 2, 3)
+│   ├── 04-erro-timeout-3s.png               # Print real: Timeout 3 s -> HTTP 502
+│   ├── 05-timeout-10s-sucesso.png           # Print real: Timeout 10 s -> HTTP 201 (G-R-003)
 │   └── logs/                                # Saídas brutas reais das execuções locais
 ├── events/
 │   └── pedido.json                          # Evento API Gateway gerado via sam local generate-event
@@ -173,7 +178,14 @@ Com base na arquitetura do projeto **Rota Vital** (`Proj-EAD`):
 
 ## 🖼️ Evidências
 
-Os logs brutos completos das execuções reais estão versionados em [`evidencias/logs/`](evidencias/logs/):
+### Prints reais da execução ([`evidencias/`](evidencias/))
+- [`01-invocacao-evento.png`](evidencias/01-invocacao-evento.png) — `sam local invoke -e events/pedido.json` (`201`, `G-R-001`).
+- [`02-http-sem-warm-containers.png`](evidencias/02-http-sem-warm-containers.png) — `sam local start-api` sem reaproveitamento (`invocacaoNesteAmbiente: 1, 1, 1`).
+- [`03-http-warm-containers-lazy.png`](evidencias/03-http-warm-containers-lazy.png) — `sam local start-api --warm-containers LAZY` (`invocacaoNesteAmbiente: 1 -> 2 -> 3`).
+- [`04-erro-timeout-3s.png`](evidencias/04-erro-timeout-3s.png) — Erro de limite com `Timeout: 3` (`timed out after 3 seconds` / `HTTP 502`).
+- [`05-timeout-10s-sucesso.png`](evidencias/05-timeout-10s-sucesso.png) — Ajuste para `Timeout: 10` e sucesso (`201`, `G-R-003`).
+
+### Logs brutos completos ([`evidencias/logs/`](evidencias/logs/))
 
 - [`01-ambiente-build-e-testes.log`](evidencias/logs/01-ambiente-build-e-testes.log) — Versões (`SAM CLI 1.174.0`, `Python 3.12.10`, `Docker 29.9.3`), `sam validate --lint`, `pytest tests/unit -v` (16/16) e `sam build`.
 - [`02-invocacao-evento.log`](evidencias/logs/02-invocacao-evento.log) — Passo 3: `sam build` e duas invocações de `sam local invoke -e events/pedido.json`.
